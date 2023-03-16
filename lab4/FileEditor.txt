@@ -1,0 +1,66 @@
+ 
+Napišite klasu FileEditor koja ima statičku metodu:
+  /**
+   * Reads input file encoded in UTF-8, process content and writes it to output file.
+   * @param inputFile input file
+   * @param outputFile output file
+   * @throws IOException
+   */
+  public static void processFile(Path inputFile, Path outputFile) throws IOException
+Metoda čita retke iz ulazne datoteke, obrađuje svaki redak i obrađeni redak zapisuje u izlaznu
+datoteku. Ulazna datoteka se nalazi u formatu CSV (Comma Separated Values) u kojoj je tablica gdje
+su stupci u svakom retku odvojeni zarezom. Izlazna datoteka treba biti u formatu TSV (Tab Separated
+Values) u kojoj su stupci odvojeni tabom. Koristite samo jednostavni format tj. pretpostavite da se u
+nekoj ćeliji tablice ne nalazi zarez ili tab.
+Vidite primjer dolje.
+
+Primjer korištenja
+
+Ako ulazna datoteka FileEditor.csv ima ovaj sadržaj:
+
+ID,URL,Title
+1570355978,https://edas.info/M1570355978,Introducing a Framework for Reporting Behavioral 
+Informatics Interventions
+1570348766,https://edas.info/M1570348766,A Game Theoretic Formulation of the Technical Debt 
+Management Problem in Cloud Systems
+1570349508,https://edas.info/M1570349508,An Efficient Receiver Architecture for Burst Reception 
+At Very Low SNR
+1570356549,https://edas.info/M1570356549,ICT-Assisted Personalized Therapy and Rehabilitation in 
+Urinary Incontinence
+1570348497,https://edas.info/M1570348497,Toward Information-Centric Software-Defined Cellular 
+Networks
+1570346490,https://edas.info/M1570346490,Impact of Dimming and Aperture on the Optical Wireless 
+Performance in Public Street Lighting
+1570349705,https://edas.info/M1570349705,An Approach to User interactions with IoT-enabled 
+Spaces
+1570348728,https://edas.info/M1570348728,A cross-comparison between TCP and AQM Algorithms: 
+which is the best Couple for Congestion Control?
+1570349370,https://edas.info/M1570349370,FSO System Performance Evaluation Based on Calibrated 
+Atmospheric Channel Emulation
+
+
+i imamo ovaj kod:
+Path inputFile = Path.of("FileEditor.txt");
+Path outputFile = Path.of("processed.txt");
+FileEditor.processFile(inputFile, outputFile);
+Izlazna datoteka treba generirati ovaj zadržaj:
+
+Debt Management Problem in Cloud Systems
+1570349508    https://edas.info/M1570349508    An Efficient Receiver Architecture for Burst 
+Reception At Very Low SNR
+1570356549    https://edas.info/M1570356549    ICT-Assisted Personalized Therapy and 
+Rehabilitation in Urinary Incontinence
+1570348497    https://edas.info/M1570348497    Toward Information-Centric Software-Defined 
+Cellular Networks
+1570346490    https://edas.info/M1570346490    Impact of Dimming and Aperture on the Optical 
+Wireless Performance in Public Street Lighting
+1570349705    https://edas.info/M1570349705    An Approach to User interactions with IoT-enabled 
+Spaces
+1570348728    https://edas.info/M1570348728    A cross-comparison between TCP and AQM 
+Algorithms: which is the best Couple for Congestion Control?
+1570349370    https://edas.info/M1570349370    FSO System Performance Evaluation Based on 
+Calibrated Atmospheric Channel Emulation
+Napomena: U izlaznoj datoteci je na kraju znak \n.
+Napomena: Sve klase i sučelja imaju vidljivost postavljenu na package private.
+Napomena: Prije predaje iz Vašeg koda izbacite sve ispise na standardni izlaz kako bi testovi ispravno
+radili.
