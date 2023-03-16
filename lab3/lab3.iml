@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/Agent" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/AnimalVisitor &amp; MilkMan" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CreditCard" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DataProcessor" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Friends - Couple" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Highlander" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Item Box" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/KeyValue" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Krizic - Kruzic" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Measurement" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Password" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/PeppaPig" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Product" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Reader" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/SimpleStack" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Triple - Point" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Triple - Triangle" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/isMonotonicList" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/isValidEmailAddress" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

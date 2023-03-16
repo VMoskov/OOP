@@ -1,0 +1,217 @@
+Koristeći klasu SimpleArrayList i klase iz 5. predavanja (definicije su prikazane na dnu ovog zadatka) napišite klasu ItemBox koja nasljeđuje SimpleArrayList na način da se u kutiju mogu spremati samo artikli (klasa Item), pa tako kutija može biti ItemBox<Food> ili ItemBox<Beverage>, ali i općenito ItemBox<Item>, no ne može biti npr. ItemBox<String> .
+
+U klasu ItemBox dodati metodu getPerishables koja će vratiti listu šifri artikala čiji je rok trajanja prošao (kvarljivi artikli implementiraju sučelje Perishable). Za listu koristiti SimpleArrayList. Ako u kutiji nema artikala čiji je rok trajanja istekao, vratiti praznu listu. Relativni poredak šifri mora odgovarati relativnom poretku artikala u listi.
+
+Današnji datum možete dobiti pozivom metode LocalDate.now().
+
+Primjer korištenja:
+
+ItemBox<Item> box = new ItemBox<>();
+
+box.add(new Beverage("15", "Fanta", 10, 2));
+box.add(new Food("52", "Tortica", 2.5, LocalDate.of(2017,6, 12)));
+
+System.out.println(box.size());// 3
+System.out.println(box.get(0));// 15 - Fanta (Beverage)
+System.out.println(box.get(1));// 52 - Tortica (Food), best before: 12.06.2017.
+Napomena: Klasu ItemBox napisati bez modifikatora vidljivosti i kopirati u prostor za rješenje bez navođenja paketa kojem pripadaju. Na vrhu možete dodavati importe iz standardnih Javinih biblioteka. Importe na klase iz predavanja, auditornih i pripreme obrisati prije predaje rješenja. Klase SimpleArrayList te klase i sučelja iz 5. predavanja (Item, Food, Cloth, Beverage, Perishable, Milk, ...) su zadane i njih ne predajete s rješenjem.
+
+class SimpleArrayList<T> {
+
+    private T[] arr;
+    private int size;
+
+    @SuppressWarnings("unchecked")
+    public SimpleArrayList() {
+        arr = (T[]) new Object[2];        
+        size = 0; // Was not necessary
+    }
+
+    // Appends the specified element to the end of this list.
+    public boolean add(T o) {
+        ensureCapacity(size + 1);        
+        arr[size++] = o;        
+        return true;
+    }
+
+    // Returns the number of elements in this list.
+    public int size() {
+        return size;
+    }
+
+    // Returns the element at the specified position in this list.
+    public T get(int index) {
+        T found = null;
+        if (index < size) {
+            found = arr[index];
+        }
+        return found;
+    }
+    
+
+    // Increases the capacity of this SimpleArrayList instance, if
+    // necessary, to ensure that it can hold at least the number of elements
+    // specified by the minimum capacity argument.
+    @SuppressWarnings("unchecked")
+    private void ensureCapacity(int minCapacity) {
+        int current = arr.length;
+        if (minCapacity > current) {
+            // Ensure some extra space so as not to copy too many times
+            Object[] newData = new Object[Math.max(current * 2, minCapacity)];
+            System.arraycopy(arr, 0, newData, 0, size);
+            arr = (T[]) newData;
+        }
+
+    }
+}
+
+abstract class Item {    
+    private String sku; //Stock Keeping Unit / ProductNumber
+    private String name;
+    private double netSalePrice;
+    public String getSku() {
+        return sku;
+    }    
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public double getNetSalePrice() {
+        return netSalePrice;
+    }
+    public void setNetSalePrice(double netSalePrice) {
+        this.netSalePrice = netSalePrice;
+    }
+    public double getVAT(){
+        return 0.25;
+    }
+    public double getPrice(int count){
+        return count * getNetSalePrice() * (1 + getVAT());
+    }
+    public abstract String getItemType();
+    
+    public Item(String sku, String name){
+        this(sku, name, 0);        
+    }
+    
+    public Item(String sku, String name, double price){        
+        this.sku = sku;
+        this.name = name;
+        this.netSalePrice = price;
+    }
+    
+    @Override
+    public String toString() {
+        return String.format("%s - %s (%s)", getSku(), getName(), getItemType());
+    }
+}
+
+class Beverage extends Item {
+    private double volume;
+    public Beverage(String sku, String name, double volume){
+        super(sku, name);
+        this.volume = volume;
+    }
+    
+    public Beverage(String sku, String name, double price, double volume){
+        super(sku, name, price);
+        this.volume = volume;
+    }
+    
+    @Override
+    public String getItemType() {
+        return "Beverage";
+    }
+
+    public double getVolume() {
+        return volume;
+    }
+
+    public void setVolume(double volume) {
+        this.volume = volume;
+    }    
+}
+
+class Cloth extends Item {
+    private double size;
+    public Cloth(String sku, String name, double size){
+        super(sku, name);
+        this.size = size;
+    }
+    
+    public Cloth(String sku, String name, double price, double size){
+        super(sku, name, price);
+        this.size = size;
+    }
+    
+    @Override
+    public String getItemType() {
+        return "Cloth";
+    }
+
+    public double getSize() {
+        return size;
+    }
+
+    public void setSize(double size) {
+        this.size = size;
+    }
+    
+}
+
+class Food extends Item implements Perishable {
+    private double weight;
+    private LocalDate bestBefore;
+    public double getWeight() {
+        return weight;
+    }
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+    @Override
+    public LocalDate getBestBefore() {
+        return bestBefore;
+    }
+    @Override
+    public void setBestBefore(LocalDate bestBefore) {
+        this.bestBefore = bestBefore;
+    }
+        
+    public Food(String sku, String name, LocalDate bestBefore){
+        super(sku, name);        
+        this.bestBefore = bestBefore;
+    }    
+    public Food(String sku, String name, double price, LocalDate bestBefore){
+        super(sku, name, price);        
+        this.bestBefore = bestBefore;
+    }
+    
+    @Override
+    public String toString() {
+        String s = super.toString();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
+        s += ", best before: " + bestBefore.format(formatter);    
+        return s;
+    }
+    
+    @Override
+    public String getItemType() {
+        return "Food";
+    }
+    
+    @Override
+    public double getVAT() {
+        return 0.13;
+    }    
+}
+
+
+interface Perishable {
+    default public String getInstructions(){
+        return "Keep in dry and cool place";
+    }
+    public LocalDate getBestBefore();
+    public void setBestBefore(LocalDate bestBefore);
+}
