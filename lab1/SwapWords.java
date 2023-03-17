@@ -1,4 +1,8 @@
 public class SwapWords {
+
+    public static void main(String[] args) {
+
+    }
     public static String swapWords(String text, String from, String to) {
         return text.replace(from, to);
 //        String newText = "";
