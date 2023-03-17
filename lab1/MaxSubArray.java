@@ -1,4 +1,3 @@
-package hr.fer.oop.lab1;
 
 public class MaxSubArray {
     public static void main(String[] args) {
