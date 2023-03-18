@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/lab2/Bank/Bank.iml" filepath="$PROJECT_DIR$/lab2/Bank/Bank.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lab2/Book/Book.iml" filepath="$PROJECT_DIR$/lab2/Book/Book.iml" />
       <module fileurl="file://$PROJECT_DIR$/lab2/lab2.iml" filepath="$PROJECT_DIR$/lab2/lab2.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/oop.iml" filepath="$PROJECT_DIR$/.idea/oop.iml" />
     </modules>
