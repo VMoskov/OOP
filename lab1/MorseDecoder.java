@@ -44,7 +44,7 @@ public class MorseDecoder {
                 }
             }
             if(s1.equals("-----")){
-                sb.append(Integer.toString(0+a));
+                sb.append(Integer.toString(a));
             }
         }
         return sb.toString();
