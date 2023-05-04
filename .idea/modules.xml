@@ -12,6 +12,7 @@
       <module fileurl="file://$PROJECT_DIR$/lab2/WordVisitor/WordVisitor.iml" filepath="$PROJECT_DIR$/lab2/WordVisitor/WordVisitor.iml" />
       <module fileurl="file://$PROJECT_DIR$/lab2/lab2.iml" filepath="$PROJECT_DIR$/lab2/lab2.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/oop.iml" filepath="$PROJECT_DIR$/.idea/oop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/testModule/testModule.iml" filepath="$PROJECT_DIR$/testModule/testModule.iml" />
     </modules>
   </component>
 </project>
